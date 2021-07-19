@@ -63,7 +63,7 @@ export default function Comic() {
             <p>
               {comicData.description}
             </p>
-            <img src={`${comicData.thumbnail.path}.${comicData.thumbnail.extension}`} alt={comicData.title} />
+            <img src={`https://images.weserv.nl/?url=${comicData.thumbnail.path}.${comicData.thumbnail.extension}`} alt={comicData.title} />
           </main>
           <aside>
             <strong>ID:</strong> {comicData.id}

@@ -7,10 +7,11 @@ export default function ItemSingle({inputItem, handleAddFavorite, handleRemoveFa
   const name = inputItem.data.results[0].name;
   const title = inputItem.data.results[0].title;
   const id = inputItem.data.results[0].id;
-  const thumbnail = `${inputItem.data.results[0].thumbnail.path}.${inputItem.data.results[0].thumbnail.extension}`;
+  const thumbnail = `https://images.weserv.nl/?url=${inputItem.data.results[0].thumbnail.path}.${inputItem.data.results[0].thumbnail.extension}`;
   const prices = inputItem.data.results[0].prices;
   const {verifyIfFavorited} = useFavorite();
 
+  // If "title" exists, means that had to show a comic
   let actualComic;
   title && (
     actualComic = {
@@ -21,6 +22,7 @@ export default function ItemSingle({inputItem, handleAddFavorite, handleRemoveFa
     }
   );
 
+  // And if "name" exists, means that had to show a character
   let actualCharacter;
   name && (
     actualCharacter = {

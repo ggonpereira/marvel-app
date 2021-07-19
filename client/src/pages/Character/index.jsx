@@ -63,7 +63,7 @@ export default function Character() {
             <p>
               {characterData.description}
             </p>
-            <img src={`${characterData.thumbnail.path}.${characterData.thumbnail.extension}`} alt={characterData.name} />
+            <img src={`https://images.weserv.nl/?url=${characterData.thumbnail.path}.${characterData.thumbnail.extension}`} alt={characterData.name} />
           </main>
           <aside>
             <strong>ID:</strong> {characterData.id}

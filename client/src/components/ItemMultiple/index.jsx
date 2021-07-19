@@ -18,7 +18,7 @@ export default function ItemMultiple({inputItem, handleAddFavorite, handleRemove
 
   function makeThumbnail(type) {
     if (type.thumbnail.path) {
-      return `${type.thumbnail.path}.${type.thumbnail.extension}`;
+      return `https://images.weserv.nl/?url=${type.thumbnail.path}.${type.thumbnail.extension}`;
     }
     return type.thumbnail;
   }
