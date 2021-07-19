@@ -40,7 +40,14 @@ export default function Comic() {
     }
 
     fetchData();
-  }, [comicId, request])
+  }, [comicId, request]);
+
+  function makeFavoriteBtn(type) {
+    if (verifyIfFavorited(favoritesList, "id", type.id)) {
+      return <p onClick={() => handleRemoveFavorite(type.id)}>Remover favorito</p>
+    }
+    return <p onClick={() => handleAddFavorite(type)}>Favoritar</p>
+  }
 
   return (
     <>
@@ -61,10 +68,8 @@ export default function Comic() {
           <aside>
             <strong>ID:</strong> {comicData.id}
 
-            { verifyIfFavorited(favoritesList, "id", comicData.id) ? (
-              <p onClick={() => handleRemoveFavorite(comicData.id)}>Remover favorito</p>
-            ) : <p onClick={() => handleAddFavorite(comicData)}>Favoritar</p> }
-
+            { makeFavoriteBtn(comicData) }
+            {/* Verifying if the comic have a wiki page */}
             { comicData.urls[1] && <a href={comicData.urls[1].url} target="_blank" rel="noreferrer">Visitar Wiki</a> }
           </aside>
         </div>

@@ -42,6 +42,13 @@ export default function Character() {
     fetchData();
   }, [characterId, request])
 
+  function makeFavoriteBtn(type) {
+    if (verifyIfFavorited(favoritesList, "id", type.id)) {
+      return <p onClick={() => handleRemoveFavorite(type.id)}>Remover favorito</p>
+    }
+    return <p onClick={() => handleAddFavorite(type)}>Favoritar</p>
+  }
+
   return (
     <>
       <Header />
@@ -60,9 +67,8 @@ export default function Character() {
           </main>
           <aside>
             <strong>ID:</strong> {characterData.id}
-            { verifyIfFavorited(favoritesList, "id", characterData.id) ? (
-              <p onClick={() => handleRemoveFavorite(characterData.id)}>Remover favorito</p>
-            ) : <p onClick={() => handleAddFavorite(characterData)}>Favoritar</p> }
+            { makeFavoriteBtn(characterData) }
+            {/* Verifying if the character have a wiki page */}
             { characterData.urls[1] && <a href={characterData.urls[1].url} target="_blank" rel="noreferrer">Visitar Wiki</a> }
           </aside>
         </div>

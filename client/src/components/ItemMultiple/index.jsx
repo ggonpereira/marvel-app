@@ -16,12 +16,26 @@ export default function ItemMultiple({inputItem, handleAddFavorite, handleRemove
     }
   }, [inputItem]);
 
+  function makeThumbnail(type) {
+    if (type.thumbnail.path) {
+      return `${type.thumbnail.path}.${type.thumbnail.extension}`;
+    }
+    return type.thumbnail;
+  }
+
+  function makeFavoriteBtn(type) {
+    if (verifyIfFavorited(favoritesList, "id", type.id)) {
+      return <p onClick={() => handleRemoveFavorite(type.id)}>Remover favorito</p>
+    }
+    return <p onClick={() => handleAddFavorite(type)}>Favoritar</p>
+  }
+
   let actualComic;
   comicData && (
     actualComic = {
       id: comicData.id,
       title: comicData.title,
-      thumbnail: (comicData.thumbnail.path ? `${comicData.thumbnail.path}.${comicData.thumbnail.extension}` : comicData.thumbnail),
+      thumbnail: makeThumbnail(comicData),
       prices: comicData.prices
     }
   );
@@ -31,7 +45,7 @@ export default function ItemMultiple({inputItem, handleAddFavorite, handleRemove
     actualCharacter = {
       id: characterData.id,
       name: characterData.name,
-      thumbnail: (characterData.thumbnail.path ? `${characterData.thumbnail.path}.${characterData.thumbnail.extension}` : characterData.thumbnail),
+      thumbnail: makeThumbnail(characterData),
     }
   );
 
@@ -44,10 +58,8 @@ export default function ItemMultiple({inputItem, handleAddFavorite, handleRemove
               <img src={actualComic.thumbnail} alt={actualComic.title} />
               <h3>{actualComic.title}</h3>
             </a>
-              <small><strong>ID:</strong> {actualComic.id}</small>
-            { verifyIfFavorited(favoritesList, "id", comicData.id) ? (
-              <p onClick={() => handleRemoveFavorite(comicData.id)}>Remover favorito</p>
-            ) : <p onClick={() => handleAddFavorite(actualComic)}>Favoritar</p> }
+            <small><strong>ID:</strong> {actualComic.id}</small>
+            {makeFavoriteBtn(actualComic)}
           </div>
         </div>
       ) 
@@ -59,10 +71,8 @@ export default function ItemMultiple({inputItem, handleAddFavorite, handleRemove
                 <img src={`${actualCharacter.thumbnail}`} alt={actualCharacter.name} />
                 <h3>{actualCharacter.name}</h3>
               </a>
-                <small><strong>ID:</strong> {actualCharacter.id}</small>
-              { verifyIfFavorited(favoritesList, "id", actualCharacter.id) ? (
-                <p onClick={() => handleRemoveFavorite(actualCharacter.id)}>Remover favorito</p>
-              ) : <p onClick={() => handleAddFavorite(actualCharacter)}>Favoritar</p> }
+              <small><strong>ID:</strong> {actualCharacter.id}</small>
+              {makeFavoriteBtn(actualCharacter)}
             </div>
           </div>
         )

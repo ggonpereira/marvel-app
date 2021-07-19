@@ -30,6 +30,13 @@ export default function ItemSingle({inputItem, handleAddFavorite, handleRemoveFa
     }
   );  
 
+  function makeFavoriteBtn(type) {
+    if (verifyIfFavorited(favoritesList, "id", type.id)) {
+      return <p onClick={() => handleRemoveFavorite(type.id)}>Remover favorito</p>
+    }
+    return <p onClick={() => handleAddFavorite(type)}>Favoritar</p>
+  }
+
   return (
     inputItem && (
       // Using the "title" to verify if is a character or comic. if is a character, "title" will be undefined
@@ -40,9 +47,7 @@ export default function ItemSingle({inputItem, handleAddFavorite, handleRemoveFa
             <h3>{actualComic.title}</h3>
           </a>
             <small><strong>ID:</strong> {actualComic.id}</small>
-          { verifyIfFavorited(favoritesList, "id", actualComic.id) ? (
-            <p onClick={() => handleRemoveFavorite(actualComic.id)}>Remover favorito</p>
-          ) : <p onClick={() => handleAddFavorite(actualComic)}>Favoritar</p> }
+            {makeFavoriteBtn(actualComic)}
         </div>
       ) :
       (
@@ -52,9 +57,7 @@ export default function ItemSingle({inputItem, handleAddFavorite, handleRemoveFa
             <h3>{actualCharacter.name}</h3>
           </a>
             <small><strong>ID:</strong> {actualCharacter.id}</small>
-            { verifyIfFavorited(favoritesList, "id", actualCharacter.id) ? (
-              <p onClick={() => handleRemoveFavorite(actualCharacter.id)}>Remover favorito</p>
-            ) : <p onClick={() => handleAddFavorite(actualCharacter)}>Favoritar</p> }
+            {makeFavoriteBtn(actualCharacter)}
         </div>
       )
     )
