@@ -1,0 +1,185 @@
+@import "../../styles/utils/variables";
+
+#home-page {
+  max-width: 1400px;
+  margin: 0 auto 90px auto;
+  padding: 0 30px;
+
+  section {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    gap: 40px;
+
+    h2 {
+      font: 500 26px "Roboto", sans-serif;
+      color: $dark;
+      text-align: center;
+      margin-top: 60px;
+
+      a {
+        text-decoration: none;
+        color: $primary;
+        transition: color 0.3s;
+
+        &:hover {
+          color: $primary-dark;
+        }
+      }
+    }
+
+    img {
+      position: absolute;
+      top: 40%;
+      transform: rotate(2.3deg);
+    }
+  }
+
+  main {
+    display: flex;
+    margin-top: 40px;
+
+    .characters,
+    .comics {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      width: 100%;
+      margin-top: 40px;
+
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 25px;
+        color: $primary-dark;
+      }
+
+      .input-group {
+        display: flex;
+        gap: 15px;
+        margin: 25px 0;
+        width: 100%;
+        justify-content: center;
+
+        input {
+          height: 40px;
+          padding: 5px 10px;
+          min-width: 220px;
+          border: 2px solid $primary;
+          color: $dark;
+          outline: none;
+          border-radius: 7px;
+        }
+
+        button {
+          border: none;
+          padding: 10px 35px;
+          background-color: $primary;
+          color: $dark;
+          transition: background-color 0.3s;
+          cursor: pointer;
+          border-radius: 7px;
+          text-transform: uppercase;
+          font-weight: 500;
+
+          &:hover {
+            background-color: $primary-dark;
+          }
+        }
+      }
+    }
+
+    .spotlight-img {
+      width: 45%;
+      height: 270px;
+      object-fit: cover;
+    }
+
+    .item-card small {
+      margin-top: 0px;
+    }
+
+    small {
+      text-align: center;
+      margin-top: 20px;
+      color: $dark;
+
+      a {
+        color: $primary-dark;
+        transition: color 0.3s;
+        text-decoration: none;
+
+        &:hover {
+          color: $primary-darker;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  #home-page {
+    section {
+      h2 {
+        font-size: 20px;
+      }
+
+      img {
+        top: 70%;
+        transform: translate(0, -50%);
+        max-width: 170px;
+      }
+    }
+
+    main {
+      flex-direction: column;
+
+      .spotlight-img {
+        width: 65%;
+        height: 270px;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+@media (max-width: 440px) {
+  #home-page {
+    padding: 0 30px;
+
+    section {
+      padding: 0;
+    }
+
+    main {
+      .characters,
+      .comics {
+        h2 {
+          font-size: 27px;
+          text-align: center;
+        }
+
+        .spotlight-img {
+          width: 90%;
+          height: 270px;
+          object-fit: cover;
+        }
+
+        .input-group {
+          flex-direction: column;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 280px) {
+  #home-page main {
+    .characters,
+    .comics {
+      .input-group input {
+        min-width: 0;
+      }
+    }
+  }
+}

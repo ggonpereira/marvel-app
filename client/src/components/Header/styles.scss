@@ -1,0 +1,94 @@
+@import "../../styles/utils/variables";
+
+header {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  padding: 0 30px;
+  align-items: center;
+  justify-content: space-between;
+  height: 90px;
+
+  svg path {
+    fill: $primary-darker;
+  }
+
+  img {
+    max-width: 120px;
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+
+    a {
+      padding: 10px 15px;
+      text-decoration: none;
+      color: $primary-dark;
+      transition: color 0.3s;
+
+      &:hover {
+        color: $primary-darker;
+      }
+    }
+
+    button {
+      display: flex;
+      height: 40px;
+      cursor: pointer;
+      align-items: center;
+      gap: 10px;
+      padding: 0 15px;
+      background-color: transparent;
+      border: 2px solid $primary;
+      border-radius: 7px;
+      font: 500 15px "Roboto", sans-serif;
+      color: $primary-dark;
+      transition: all 0.3s;
+      margin-left: 15px;
+
+      img {
+        filter: invert(91%) sepia(92%) saturate(600%) hue-rotate(69deg)
+          brightness(92%) contrast(94%);
+        transition: filter 0.3s;
+      }
+
+      &:hover {
+        color: $white;
+        background-color: $primary;
+
+        img {
+          filter: invert(92%) sepia(40%) saturate(0%) hue-rotate(167deg)
+            brightness(105%) contrast(106%);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 540px) {
+  header {
+    flex-direction: column;
+    margin: 30px 0 20px 0;
+    gap: 10px;
+
+    nav {
+      ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px 0;
+
+        button {
+          margin-left: 0px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 301px) {
+  header {
+    margin-bottom: 70px;
+  }
+}

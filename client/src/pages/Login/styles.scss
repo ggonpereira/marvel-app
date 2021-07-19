@@ -1,0 +1,124 @@
+@import "../../styles/utils/variables";
+
+#login-page,
+#register-page {
+  max-width: 1400px;
+  margin: 0 auto 90px auto;
+  padding: 0 30px;
+
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+
+    h1 {
+      color: $primary-dark;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    p {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+
+      .input-group {
+        display: flex;
+        flex-direction: column;
+
+        label {
+          margin-bottom: 5px;
+        }
+
+        input {
+          height: 35px;
+          padding: 5px 10px;
+          width: 370px;
+          border: 2px solid $primary;
+          color: $dark;
+          font-weight: 500;
+          outline: none;
+          border-radius: 7px;
+        }
+
+        &:not(:first-of-type) {
+          margin-top: 15px;
+        }
+      }
+
+      small {
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: -10px;
+        color: red;
+      }
+
+      button {
+        border: none;
+        padding: 15px 35px;
+        width: 370px;
+        background-color: $primary;
+        color: $dark;
+        transition: background-color 0.3s;
+        cursor: pointer;
+        border-radius: 7px;
+        text-transform: uppercase;
+        font-weight: 500;
+        margin-top: 30px;
+
+        &:hover {
+          background-color: $primary-dark;
+        }
+      }
+    }
+  }
+}
+
+#register-page {
+  .character-img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+}
+
+#login-page {
+  .character-img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  #login-page,
+  #register-page {
+    main {
+      > img {
+        display: none;
+      }
+
+      h1 {
+        font-size: 27px;
+      }
+
+      p {
+        font-size: 14px;
+      }
+
+      .input-group input {
+        width: 100%;
+      }
+
+      .input-group,
+      button {
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,126 @@
+@import "../../styles/utils/variables";
+
+#character-page,
+#comic-page {
+  max-width: 1400px;
+  margin: 0 auto 90px auto;
+  padding: 0 30px;
+
+  .content {
+    display: flex;
+    margin-top: 40px;
+    gap: 50px;
+
+    main {
+      width: 80%;
+
+      h1,
+      p {
+        text-align: center;
+      }
+
+      h1 {
+        color: $primary-dark;
+        font-size: 2.2rem;
+        margin-bottom: 7px;
+      }
+
+      p {
+        margin-bottom: 25px;
+        color: $dark;
+        padding: 0 15%;
+      }
+
+      img {
+        display: block;
+        border-radius: 7px;
+        margin: 0 auto;
+        box-shadow: 0px 5px 14px 7px rgba(66, 236, 154, 0.082);
+        max-width: 400px;
+        max-height: 480px;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    aside {
+      width: 20%;
+      text-align: end;
+      font-size: 1.2rem;
+
+      p {
+        color: $primary-dark;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      a,
+      a:visited {
+        color: $primary;
+        transition: color 0.3s;
+
+        &:hover {
+          color: $primary-dark;
+        }
+      }
+    }
+  }
+
+  section {
+    h2 {
+      text-align: center;
+      color: $primary-dark;
+      margin-top: 35px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: minmax(100px, auto);
+      gap: 10px 30px;
+    }
+  }
+}
+
+@media (max-width: 1260px) {
+  #character-page,
+  #comic-page {
+    section {
+      .content-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
+}
+
+@media (max-width: 940px) {
+  #character-page,
+  #comic-page {
+    section {
+      .content-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+}
+
+@media (max-width: 580px) {
+  #character-page,
+  #comic-page {
+    .content {
+      flex-direction: column;
+
+      main,
+      aside {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    section {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+}
