@@ -52,12 +52,7 @@ $ cd marvel-app
 
 - Now you'll have to create a new database (I recommend this name: "marvel-app")
 
-- And create a ".env" file in the root directory with this followings infos (I've added a filled called ".env.example", just remove ".example" from the filename and change the infos):
-DB_NAME=NAME_OF_DATABASE
-DB_HOST=HOST_OF_DATABASE
-DB_USER=USER_OF_DB_ADMIN
-DB_PASS=PASS_OF_DB_ADMIN
-SECRET_PHRASE=LITERALLY_ANYTHING
+- Now you can rename the file called ".env.example" to ".env" and change the informations (except the infos before "=") to your DB infos
 
 - And go to "server/src/models/" and remove the comment where says "_____.sync({ force: true });" from "Favorite.js" and "User.js"
 
@@ -69,12 +64,21 @@ $ npm start
 
 - When the server is started you can comment again the lines you've removed the comment before and restart the server
 
-- Now to start the front-end app, you can enter the folder "marvel-app/client" and type
+-
+
+- Now to start the front-end app, firstly you have to go into "marvel-app/client/src/api.js" and change the line of code saying:
+
+- baseURL: "https://fullstack-marvel-app.herokuapp.com/",
+to
+- baseURL: "http://localhost:3001",
+
+- Finally you can go back into marvel-app/client and type
+
 $ yarn start
 
 (if you don't have Yarn installed, please install here "https://yarnpkg.com/")
 
-- And finally, access: http://localhost:3000
+- And finally, access: http://localhost:3000 (if the yarn hasn't accessed to you)
 ```
 
 ---
