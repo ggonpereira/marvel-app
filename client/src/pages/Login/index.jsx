@@ -10,7 +10,7 @@ import "./styles.scss";
 export default function Login() {
   const [emailLog, setEmailLog] = useState("");
   const [passwordLog, setPasswordLog] = useState("");
-  
+  const [showPassword, setShowPassword] = useState(false);  
   const { handleLogin, errorMessage } = useContext(AuthContext);
 
   function handleSubmit(evt) {
@@ -41,13 +41,16 @@ export default function Login() {
 
           <div className="input-group">
             <label htmlFor="password">Senha</label>
-            <input 
-              id="password" 
-              type="password" 
-              name="password"
-              required
-              onChange={(e) => setPasswordLog(e.target.value)}
-            />
+            <div className="passwordInput">
+              <input 
+                id="password" 
+                type={showPassword ? "text" : "password"} 
+                name="password"
+                required
+                onChange={(e) => setPasswordLog(e.target.value)}
+              />
+              <small onClick={() => setShowPassword(!showPassword)}>{showPassword ? "Ocultar" : "Mostrar"}</small>
+            </div>
           </div>
 
           <small>{errorMessage}</small>

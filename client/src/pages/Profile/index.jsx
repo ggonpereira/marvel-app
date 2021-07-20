@@ -12,19 +12,19 @@ import "./styles.scss";
 export default function Profile() {
   const { userInfo, setUserInfo } = useContext(AuthContext);
   const { errorMsg, setErrorMsg } = useState("");
-  const [usernameLog, setUsernameLog] = useState("");
-  const [emailLog, setEmailLog] = useState("");
-  const [passwordLog, setPasswordLog] = useState("");
-
+  const [usernameProf, setUsernameProf] = useState("");
+  const [emailProf, setEmailProf] = useState("");
+  const [passwordProf, setPasswordProf] = useState("");
+  const [showPassword, setShowPassword] = useState(false);  
   async function changeUserDatas() {
     const token = localStorage.getItem("token");
 
     const { data: userData, message } = await api.post("/editUser", {
       userId: userInfo.id,
       token,
-      newUsername: usernameLog,
-      newEmail: emailLog,
-      newPassword: passwordLog,
+      newUsername: usernameProf,
+      newEmail: emailProf,
+      newPassword: passwordProf,
     });
 
     if (message) {
@@ -61,7 +61,7 @@ export default function Profile() {
               id="username" 
               type="text" 
               name="newUsername" 
-              onChange={(e) => setUsernameLog(e.target.value)}
+              onChange={(e) => setUsernameProf(e.target.value)}
             />
           </div>
 
@@ -71,18 +71,22 @@ export default function Profile() {
               id="email" 
               type="email" 
               name="newEmail" 
-              onChange={(e) => setEmailLog(e.target.value)}
+              onChange={(e) => setEmailProf(e.target.value)}
             />
           </div>
 
           <div className="input-group">
             <label htmlFor="password">Nova senha</label>
-            <input 
-              id="password" 
-              type="password" 
-              name="newPassword" 
-              onChange={(e) => setPasswordLog(e.target.value)}
-            />
+            <div className="passwordInput">
+              <input 
+                id="password" 
+                type={showPassword ? "text" : "password"} 
+                name="password"
+                required
+                onChange={(e) => setPasswordProf(e.target.value)}
+              />
+              <small onClick={() => setShowPassword(!showPassword)}>{showPassword ? "Ocultar" : "Mostrar"}</small>
+            </div>
           </div>
 
           <small>{errorMsg}</small>

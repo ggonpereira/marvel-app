@@ -13,7 +13,7 @@ export default function Register() {
   const [emailReg, setEmailReg] = useState("");
   const [passwordReg, setPasswordReg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
-
+  const [showPassword, setShowPassword] = useState(false);  
   const history = useHistory();
 
   const registerUser = async () => {
@@ -69,13 +69,16 @@ export default function Register() {
 
           <div className="input-group">
             <label htmlFor="password">Senha</label>
-            <input 
-              id="password" 
-              type="password" 
-              name="password"
-              required
-              onChange={(e) => setPasswordReg(e.target.value)}  
-            />
+            <div className="passwordInput">
+              <input 
+                id="password" 
+                type={showPassword ? "text" : "password"} 
+                name="password"
+                required
+                onChange={(e) => setPasswordReg(e.target.value)}
+              />
+              <small onClick={() => setShowPassword(!showPassword)}>{showPassword ? "Ocultar" : "Mostrar"}</small>
+            </div>
           </div>
 
           <small>{errorMsg}</small>
