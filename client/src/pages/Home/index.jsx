@@ -37,13 +37,15 @@ export default function Home() {
       https://gateway.marvel.com/v1/public/${type}/${id}?ts=stoneandmarvel&apikey=6cc659fd37766ed5726c0263c661550c&hash=22ccdb1acca211bae0b84188b1828d17
     `);
 
-    if (type === "characters") {
-      if (json) setCharacter(json);
-    } else if (type === "comics") {
-      if (json) setComics(json);
+    function verifyType(receivedType, receivedJson) {
+      receivedType === "characters" ? setCharacter(receivedJson) : setComics(receivedJson);
+    }
+
+    if (json) {
+      verifyType(type, json);
     } else {
       console.log("Ocorreu um erro.")
-    }   
+    }
   }
 
   return (
@@ -52,12 +54,11 @@ export default function Home() {
       <div id="home-page">
       <Toaster />
 
-      { authenticated !== true ? (
+      { !authenticated ? (
         <section>
           <h2>Por favor, <Link to="/register">registre-se</Link> ou <Link to="/login">faça login</Link> para utilizar a aplicação</h2>
           <img src={hulk} alt="Hulk" />
         </section>
-        
       ) : (
         <main>
           <div className="characters">
@@ -75,6 +76,7 @@ export default function Home() {
 
             { character && (
               <div className="character-result">
+                {/* Verifications to show the searched character */}
                 { !loading && !error && character && (
                   character.code === 200 
                     ? <ItemSingle 
@@ -103,6 +105,7 @@ export default function Home() {
           { error && <p>Ocorreu um erro.</p>}
 
           <div className="comics-result">
+            {/* Verifications to show the searched comic */}
             { !loading && !error && comics && (
               comics.code === 200 
                 ? <ItemSingle 
