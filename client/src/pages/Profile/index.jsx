@@ -82,7 +82,6 @@ export default function Profile() {
                 id="password" 
                 type={showPassword ? "text" : "password"} 
                 name="password"
-                required
                 onChange={(e) => setPasswordProf(e.target.value)}
               />
               <small onClick={() => setShowPassword(!showPassword)}>{showPassword ? "Ocultar" : "Mostrar"}</small>
