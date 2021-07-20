@@ -49,6 +49,27 @@ export default function Character() {
     return <p onClick={() => handleAddFavorite(type)}>Favoritar</p>
   }
 
+  function showComicsWithTheCharacter() {
+    if (comicsInData) {
+      return (
+        <div className="content-grid">
+          {comicsInData && comicsInData.map((comic) => {
+            return (
+              <ItemMultiple 
+                inputItem={comic} 
+                key={comic.id} 
+                handleAddFavorite={handleAddFavorite} 
+                handleRemoveFavorite={handleRemoveFavorite} 
+                favoritesList={favoritesList} 
+              />
+            )
+          })}
+        </div>
+      );
+    }
+    return <p>Carregando dados...</p>
+  }
+
   return (
     <>
       <Header />
@@ -76,26 +97,11 @@ export default function Character() {
         <section>
           <h2>HQs em que o personagem aparece:</h2>
 
-          { comicsInData ? (
-            <div className="content-grid">
-              {comicsInData && comicsInData.map((comic) => {
-                return (
-                  <ItemMultiple 
-                    inputItem={comic} 
-                    key={comic.id} 
-                    handleAddFavorite={handleAddFavorite} 
-                    handleRemoveFavorite={handleRemoveFavorite} 
-                    favoritesList={favoritesList} 
-                  />
-                )
-              })}
-            </div>
-          ) : <p>Carregando dados...</p> }
+          { showComicsWithTheCharacter() }
         </section>
         </>
       ) : <p>Carregando dados...</p> }
     </div>
     </>
-    
   );
 }
