@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import { AuthContext } from "../../contexts/AuthContext";
 
 import signOut from "../../assets/images/sign-out.svg";
-import stoneLogo from "../../assets/images/logo.svg";
+import siteLogo from "../../assets/images/logo.svg";
 import "./styles.scss";
 
 export default function Header() {
@@ -13,7 +13,7 @@ export default function Header() {
   return (
     <header>
       <Link to="/">
-        <img src={stoneLogo} alt="Stone Logo" />
+        <img src={siteLogo} alt="Site Logo" />
       </Link>
       <nav>
         <ul>

@@ -49,8 +49,10 @@ header {
       margin-left: 15px;
 
       img {
-        filter: invert(91%) sepia(92%) saturate(600%) hue-rotate(69deg)
-          brightness(92%) contrast(94%);
+        // filter: invert(91%) sepia(92%) saturate(600%) hue-rotate(69deg)
+        //   brightness(92%) contrast(94%);
+        filter: invert(8%) sepia(79%) saturate(5952%) hue-rotate(347deg)
+          brightness(119%) contrast(126%);
         transition: filter 0.3s;
       }
 
